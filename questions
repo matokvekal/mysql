@@ -1,0 +1,149 @@
+related to northwind db
+part 1
+
+1. Basic Select
+Retrieve all the unique product names from the Products table.
+
+2. Select with Condition
+Which employees are from the city of "Seattle"?
+
+3. Basic Sort
+List all the customers in the Customers table, ordered by CompanyName in ascending order.
+
+4. Sort Multiple Columns
+List all the orders in the Orders table, sorted by OrderDate in descending order and then by OrderID in ascending order.
+
+5. Aliases
+In the Products table, show ProductName as Item Name and UnitPrice as Price.
+
+6. Join with Aliases
+Retrieve the ProductName (as Item) and CategoryName (as Category Type) from the Products table joined with the Categories table.
+
+7. Aggregate Functions with Aliases
+What is the total number of products in the Products table? Display the result with the column name Total Products.
+
+8. Conditional Select with Sort
+From the Orders table, list the OrderID and OrderDate of orders placed in the year 1997, sorted by OrderDate in ascending order.
+
+9. String Functions with Aliases
+Extract the first 5 characters of each ProductName from the Products table and display it as Short Name.
+
+10. Complex Join with Aliases and Sort
+Join the Order Details table with the Products table to list all the ProductNames (as Items Ordered) and their Quantity, sorted by Quantity in descending order.
+
+part 2
+
+
+1. How many orders does each customer have? (Use JOIN)
+
+2. List all the employees and their corresponding managers.
+
+3. Which suppliers provide seafood products? (List the supplier name and product name)
+
+4. Retrieve the list of orders that don't have corresponding order details.
+
+5. Which customers have never placed an order?
+
+6. List all products, and their category names, that have been discontinued.
+
+7. Find all the customers from France who have placed orders. List their company names and contact names.
+
+8. List the highest-priced product from each category.
+
+9. How many products does each supplier provide? (Use JOIN)
+
+10. Which orders contain the product 'Chai'?
+
+11. Find all products that have never been ordered.
+
+12. Who are the employees that report to 'Andrew Fuller'?
+
+13. Which categories have the most products? (Top 5)
+
+14. Find all employees who don't have subordinates.
+
+15. Which employees have processed orders for the 'Chocolade' product?
+
+16. How many orders were shipped by 'Speedy Express'?
+
+17. List all customers and their total order amounts, ordering the list by the highest total order amount first.
+
+18. Which suppliers have products with a unit price greater than 40?
+
+19. List the employees and the number of orders they have processed in the year 1997.
+
+20. Find all orders that were placed by customers from the USA and shipped by 'Federal Shipping'.
+
+part 3
+1. Using the ROUND() function, find the average price of all products rounded to the nearest whole number.
+
+2. Using the CEIL() function, find the highest order quantity and round it up to the next whole number.
+
+3. Retrieve the sum of all order quantities from the Order Details table.
+
+4. How many products have a unit price greater than the average unit price? Use the AVG() function in your query.
+
+5. Find the difference in days between the earliest and latest OrderDate from the Orders table using the DATEDIFF() function.
+
+6. List all products that have the word "cheese" anywhere in their product name using the LIKE operator.
+
+7. Extract the month from the OrderDate column for all orders placed in 1997. Use the MONTH() function.
+
+8. Using the CONCAT() function, combine the FirstName and LastName columns in the Employees table to display the full name of each employee.
+
+9. Retrieve all orders placed in the second quarter (April, May, June) of any year. Use the MONTH() function in combination with the BETWEEN operator.
+
+10. For the Products table, list the products with a unit price that has a decimal value greater than 0.5.
+
+11. Find the employees who started working in the company on a Monday. Use the DAYOFWEEK() function.
+
+12. Use the UPPER() function to convert all customer company names to uppercase and list them.
+
+13. Find all customers whose contact name starts with the letters A-M using the LEFT() function combined with the WHERE clause.
+
+14. Calculate the total number of years of employment across all employees up to today. Use the SUM() and YEAR() functions with the DATEDIFF() function.
+
+15. Retrieve all products where the length of the product name is more than 10 characters. Use the LENGTH() or CHAR_LENGTH() function.
+
+16. Find out how many days are left in the current year from today. Use the CURDATE(), LAST_DAY(), and DATEDIFF() functions.
+
+17. List all orders where the ship name contains the same first three letters as the ship country using the SUBSTRING() function.
+
+18. Using the MOD() function, find all products whose product ID is odd.
+
+19. Calculate the age of each employee in years based on their BirthDate. Use the TIMESTAMPDIFF() function.
+
+20. Find all customers who registered in the last 15 days of any month. Use the DAY() function combined with the WHERE clause.
+
+part 4
+1.Managers and Subordinates: List all the employees along with their respective managers.
+2.Employee Regions: Which regions have more than 2 employees?
+3.Order Processors: Which employees have not processed any orders?
+4.Employee Hierarchy: Who reports directly to 'Janet Leverling'?
+5.Senior Employees: List all employees who don't have a manager.
+
+
+pat 5
+
+1.How many orders has each customer placed?
+2.What is the total quantity of each product sold?
+3How many orders were placed in each year?
+4What's the average, minimum, and maximum order quantity per product?
+5Which countries have the highest number of customers?
+6How many products are there in each category?
+7Which employees have processed the highest number of orders?
+8Which shippers have delivered the most number of orders?
+I9n which month did we get the highest number of orders?
+10How many suppliers are there for each product category?
+11What is the total revenue for each product?
+12How many products have been discontinued by category?
+13Which employees have the highest average order value?
+14How many employees are there in each office location?
+15What's the total order value for each country?
+16How many orders have been placed by payment method (assuming a payment method column)?
+17What is the average discount provided per product?
+18How many unique customers does each employee serve?
+19Which category of products has the most discounts applied?
+20How many orders have been shipped each month?
+
+
