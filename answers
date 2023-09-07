@@ -1,0 +1,160 @@
+ ANSWERS:
+part 1
+
+1.SELECT DISTINCT ProductName FROM Products;
+
+2.SELECT * FROM Employees WHERE City = 'Seattle';
+
+3.SELECT * FROM Customers ORDER BY CompanyName;
+
+4.SELECT OrderID, ProductID, (UnitPrice * Quantity) AS TotalPrice FROM [Order Details] WHERE OrderID = 10248;
+
+5.SELECT CategoryID, AVG(UnitPrice) AS AveragePrice FROM Products GROUP BY CategoryID;
+
+6.SELECT c.CompanyName, COUNT(o.OrderID) AS TotalOrders FROM Customers c INNER JOIN Orders o ON c.CustomerID = o.CustomerID GROUP BY c.CompanyName;
+
+7.SELECT p.ProductName, c.CategoryName FROM Products p INNER JOIN Categories c ON p.CategoryID = c.CategoryID WHERE c.CategoryName = 'Beverages';
+
+8.SELECT TOP 10 p.ProductName, p.UnitPrice FROM Products p ORDER BY p.UnitPrice DESC;
+
+9.SELECT e.FirstName, e.LastName, COUNT(o.OrderID) AS NumberOfOrders FROM Employees e LEFT JOIN Orders o ON e.EmployeeID = o.EmployeeID GROUP BY e.FirstName, e.LastName;
+
+10.SELECT m.ProductName, SUM(od.Quantity) AS TotalSold FROM [Order Details] od INNER JOIN Products p ON od.ProductID = p.ProductID GROUP BY m.ProductName ORDER BY TotalSold DESC;
+
+
+Part 2 
+
+1.A. SELECT c.CompanyName, COUNT(o.OrderID) FROM Customers c INNER JOIN Orders o ON c.CustomerID = o.CustomerID GROUP BY c.CompanyName;
+1.B. SELECT c.CompanyName, COUNT(o.OrderID) FROM Customers c, Orders o WHERE c.CustomerID = o.CustomerID GROUP BY c.CompanyName;
+
+2.A. SELECT e1.FirstName AS EmployeeName, e2.FirstName AS ManagerName FROM Employees e1 LEFT JOIN Employees e2 ON e1.ReportsTo = e2.EmployeeID;
+
+3.A. SELECT s.CompanyName, p.ProductName FROM Suppliers s INNER JOIN Products p ON s.SupplierID = p.SupplierID WHERE p.CategoryID = (SELECT CategoryID FROM Categories WHERE CategoryName = 'Seafood');
+
+4.A. SELECT o.OrderID FROM Orders o LEFT JOIN [Order Details] od ON o.OrderID = od.OrderID WHERE od.OrderID IS NULL;
+
+5.A. SELECT c.CompanyName FROM Customers c LEFT JOIN Orders o ON c.CustomerID = o.CustomerID WHERE o.OrderID IS NULL;
+
+6.A. SELECT p.ProductName, c.CategoryName FROM Products p INNER JOIN Categories c ON p.CategoryID = c.CategoryID WHERE p.Discontinued = 1;
+
+7.A. SELECT DISTINCT c.CompanyName, c.ContactName FROM Customers c INNER JOIN Orders o ON c.CustomerID = o.CustomerID WHERE c.Country = 'France';
+
+8.A. SELECT p.ProductName, p.UnitPrice, c.CategoryName FROM Products p INNER JOIN Categories c ON p.CategoryID = c.CategoryID WHERE p.UnitPrice = (SELECT MAX(UnitPrice) FROM Products WHERE CategoryID = p.CategoryID);
+
+9.A. SELECT s.CompanyName, COUNT(p.ProductID) FROM Suppliers s INNER JOIN Products p ON s.SupplierID = p.SupplierID GROUP BY s.CompanyName;
+
+10.A. SELECT o.OrderID FROM Orders o INNER JOIN [Order Details] od ON o.OrderID = od.OrderID INNER JOIN Products p ON od.ProductID = p.ProductID WHERE p.ProductName = 'Chai';
+
+11.A. SELECT p.ProductName FROM Products p LEFT JOIN [Order Details] od ON p.ProductID = od.ProductID WHERE od.OrderID IS NULL;
+
+12.A. SELECT e.FirstName, e.LastName FROM Employees e WHERE e.ReportsTo = (SELECT EmployeeID FROM Employees WHERE FirstName = 'Andrew' AND LastName = 'Fuller');
+
+13.A. SELECT TOP 5 c.CategoryName, COUNT(p.ProductID) AS NumberOfProducts FROM Categories c INNER JOIN Products p ON c.CategoryID = p.CategoryID GROUP BY c.CategoryName ORDER BY NumberOfProducts DESC;
+
+14.A. SELECT e.FirstName, e.LastName FROM Employees e LEFT JOIN Employees e2 ON e.EmployeeID = e2.ReportsTo WHERE e2.EmployeeID IS NULL;
+
+15.A. SELECT DISTINCT e.FirstName, e.LastName FROM Employees e INNER JOIN Orders o ON e.EmployeeID = o.EmployeeID INNER JOIN [Order Details] od ON o.OrderID = od.OrderID INNER JOIN Products p ON od.ProductID = p.ProductID WHERE p.ProductName = 'Chocolade';
+
+16.A. SELECT COUNT(o.OrderID) FROM Orders o INNER JOIN Shippers s ON o.ShipVia = s.ShipperID WHERE s.CompanyName = 'Speedy Express';
+
+17.A. SELECT c.CompanyName, SUM(od.UnitPrice * od.Quantity) AS TotalOrderAmount FROM Customers c INNER JOIN Orders o ON c.CustomerID = o.CustomerID INNER JOIN [Order Details] od ON o.OrderID = od.OrderID GROUP BY c.CompanyName ORDER BY TotalOrderAmount DESC;
+
+18.A. SELECT DISTINCT s.CompanyName FROM Suppliers s INNER JOIN Products p ON s.SupplierID = p.SupplierID WHERE p.UnitPrice > 40;
+
+19.A. SELECT e.FirstName, e.LastName, COUNT(o.OrderID) AS NumberOfOrders FROM Employees e INNER JOIN Orders o ON e.EmployeeID = o.EmployeeID WHERE YEAR(o.OrderDate) = 1997 GROUP BY e.FirstName, e.LastName;
+
+20.A. SELECT o.OrderID FROM Orders o INNER JOIN Customers c ON o.CustomerID = c.CustomerID INNER JOIN Shippers s ON o.ShipVia = s.ShipperID WHERE c.Country = 'USA' AND s.CompanyName = 'Federal Shipping';
+
+Part 3
+1. SELECT ROUND(AVG(UnitPrice)) AS RoundedAvgPrice FROM Products;
+
+2. SELECT CEIL(MAX(Quantity)) AS CeilMaxQuantity FROM OrderDetails;
+
+3. SELECT FLOOR(MIN(Quantity)) AS FloorMinQuantity FROM OrderDetails;
+
+4. SELECT COUNT(*) FROM Products WHERE LCASE(ProductName) LIKE '%bread%';
+
+5. SELECT CONCAT(FirstName, ' ', LastName) AS FullName FROM Employees WHERE DATEDIFF(CURDATE(), HireDate) > 365;
+
+6. SELECT SUBSTRING(ContactName, 1, CHAR_LENGTH(ContactName) - 3) FROM Customers WHERE Country = 'Germany';
+
+7. SELECT DAY(OrderDate) FROM Orders WHERE MONTH(OrderDate) = 5 AND YEAR(OrderDate) = 1997;
+
+8. SELECT DISTINCT ProductName FROM Products WHERE LENGTH(ProductName) = 5;
+
+9. SELECT CustomerID, COUNT(*) AS TotalOrders FROM Orders GROUP BY CustomerID HAVING TotalOrders > 10;
+
+10. SELECT ProductName, MOD(UnitsInStock, 10) AS Remainder FROM Products;
+
+11. SELECT OrderID, ProductID, (Quantity * UnitPrice) AS TotalPrice FROM OrderDetails WHERE Quantity * UnitPrice > 1000;
+
+12. SELECT COUNT(*) FROM Products WHERE LCASE(ProductName) NOT LIKE '%a%' AND LCASE(ProductName) NOT LIKE '%e%';
+
+13. SELECT CURDATE() - INTERVAL 3 MONTH AS ThreeMonthsAgoDate;
+
+14. SELECT ProductName, UnitsInStock * UnitPrice AS TotalValue FROM Products ORDER BY TotalValue DESC LIMIT 5;
+
+15. SELECT DATE_FORMAT(OrderDate, '%Y-%m-%d') AS FormattedDate FROM Orders WHERE DAYNAME(OrderDate) = 'Monday';
+
+16. SELECT TIMESTAMPDIFF(YEAR, BirthDate, CURDATE()) AS Age FROM Employees WHERE EmployeeID = 3;
+
+17. SELECT CEILING(AVG(CHAR_LENGTH(ContactName))) FROM Customers WHERE ContactTitle = 'Owner';
+
+18. SELECT OrderID FROM Orders WHERE DATEDIFF(ShippedDate, OrderDate) > 5;
+
+19. SELECT LEFT(ProductName, 3) AS ProductInitials FROM Products;
+
+20. SELECT ProductName, POW(UnitsOnOrder, 2) AS SquaredUnitsOnOrder FROM Products WHERE UnitsOnOrder > 0;
+
+Part 4
+1.SELECT E1.FirstName AS EmployeeName, E2.FirstName AS ManagerName
+FROM Employees E1
+LEFT JOIN Employees E2 ON E1.ReportsTo = E2.EmployeeID;
+
+2.SELECT Region, COUNT(*) as NumberOfEmployees
+FROM Employees
+GROUP BY Region
+HAVING COUNT(*) > 2;
+
+
+3.SELECT FirstName, LastName
+FROM Employees
+WHERE EmployeeID NOT IN (SELECT DISTINCT EmployeeID FROM Orders);
+
+
+4.SELECT FirstName, LastName
+FROM Employees
+WHERE ReportsTo = (SELECT EmployeeID FROM Employees WHERE FirstName = 'Janet' AND LastName = 'Leverling');
+
+
+5.SELECT FirstName, LastName
+FROM Employees
+WHERE ReportsTo IS NULL;
+
+Part 5
+
+
+
+1SELECT CustomerID, COUNT(OrderID) FROM Orders GROUP BY CustomerID;
+2SELECT ProductID, SUM(Quantity) FROM OrderDetails GROUP BY ProductID;
+3SELECT YEAR(OrderDate), COUNT(OrderID) FROM Orders GROUP BY YEAR(OrderDate);
+4SELECT ProductID, AVG(Quantity), MIN(Quantity), MAX(Quantity) FROM OrderDetails GROUP BY ProductID;
+5SELECT Country, COUNT(CustomerID) FROM Customers GROUP BY Country ORDER BY COUNT(CustomerID) DESC LIMIT 1;
+6SELECT CategoryID, COUNT(ProductID) FROM Products GROUP BY CategoryID;
+7SELECT EmployeeID, COUNT(OrderID) FROM Orders GROUP BY EmployeeID ORDER BY COUNT(OrderID) DESC;
+8SELECT ShipperID, COUNT(OrderID) FROM Orders GROUP BY ShipperID ORDER BY COUNT(OrderID) DESC;
+9SELECT MONTH(OrderDate), COUNT(OrderID) FROM Orders GROUP BY MONTH(OrderDate) ORDER BY COUNT(OrderID) DESC LIMIT 1;
+10SELECT CategoryID, COUNT(DISTINCT SupplierID) FROM Products GROUP BY CategoryID;
+11SELECT ProductID, SUM(UnitPrice * Quantity) FROM OrderDetails GROUP BY ProductID;
+12SELECT CategoryID, COUNT(ProductID) FROM Products WHERE Discontinued = 1 GROUP BY CategoryID;
+13SELECT o.EmployeeID, AVG(od.UnitPrice * od.Quantity) FROM Orders o JOIN OrderDetails od ON o.OrderID = od.OrderID GROUP BY o.EmployeeID ORDER BY AVG(od.UnitPrice * od.Quantity) DESC;
+14SELECT City, COUNT(EmployeeID) FROM Employees GROUP BY City;
+15SELECT c.Country, SUM(od.UnitPrice * od.Quantity) FROM Customers c JOIN Orders o ON c.CustomerID = o.CustomerID JOIN OrderDetails od ON o.OrderID = od.OrderID GROUP BY c.Country;
+16SELECT PaymentMethod, COUNT(OrderID) FROM Orders GROUP BY PaymentMethod; (assuming a PaymentMethod column exists)
+17SELECT ProductID, AVG(Discount) FROM OrderDetails GROUP BY ProductID;
+18SELECT EmployeeID, COUNT(DISTINCT CustomerID) FROM Orders GROUP BY EmployeeID;
+19SELECT p.CategoryID, COUNT(od.ProductID) FROM OrderDetails od JOIN Products p ON od.ProductID = p.ProductID WHERE od.Discount > 0 GROUP BY p.CategoryID;
+20SELECT MONTH(ShippedDate), COUNT(OrderID) FROM Orders WHERE ShippedDate IS NOT NULL GROUP BY MONTH(ShippedDate);
+
+
+
